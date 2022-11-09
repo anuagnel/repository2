@@ -4,7 +4,11 @@ pipeline{
 	agent any
 
 	stages {
-
+	stage('Initialize'){
+            steps{
+                echo "PATH = ${M2_HOME}/bin:${PATH}"
+            }
+        }
 		stage('Build') {
 
 			steps {
