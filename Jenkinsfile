@@ -12,6 +12,7 @@ pipeline{
 		stage('Build') {
 
 			steps {
+				
 				sh 'docker build -t anuagnel/mypublicbuilds:mynewapp-${BUILD_NUMBER} .'
 			}
 		}
@@ -19,6 +20,7 @@ pipeline{
 		stage('Login') {
 
 			steps {
+				sh 'mvn clean install'
 				sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
 			}
 		}
@@ -26,7 +28,7 @@ pipeline{
 		stage('Push') {
 
 			steps {
-				sh 'docker push anuagnel/mypublicbuilds:mynewapp-${BUILD_NUMBER}'
+				sh 'docker push anuagnel/mypublicbuilds:mynewapp-j-${BUILD_NUMBER}'
 			}
 		}
 	}
