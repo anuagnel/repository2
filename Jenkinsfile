@@ -6,7 +6,7 @@ pipeline{
 	stages {
 	stage('Initialize'){
             steps{
-                echo "PATH = ${M2_HOME}/bin:${PATH}"
+                echo "PATH = D:/Programmes/apache-maven-3.8.1/bin:${PATH}"
             }
         }
 		stage('Build') {
