@@ -3,16 +3,12 @@ pipeline{
 
 	agent any
 
-	environment {
-		DOCKERHUB_CREDENTIALS=credentials('cf3a5fce-42b1-481e-8606-5ae8aca732bc)
-	}
-
 	stages {
 
 		stage('Build') {
 
 			steps {
-				
+				sh 'mvn clean install'
 				sh 'docker build -t anuagnel/mypublicbuilds:mynewapp-${BUILD_NUMBER} .'
 			}
 		}
@@ -20,8 +16,8 @@ pipeline{
 		stage('Login') {
 
 			steps {
-				sh 'mvn clean install'
-				sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+				
+				sh 'docker login  -u anuagnel --password dckr_pat_PMwgU2kcIKjS_yYwTP85Pd18NEI'
 			}
 		}
 
