@@ -1,4 +1,3 @@
-
 pipeline{
 
 	agent any
@@ -21,7 +20,7 @@ pipeline{
 
 			steps {
 				
-				sh 'docker login  -u anuagnel --password dckr_pat_PMwgU2kcIKjS_yYwTP85Pd18NEI'
+				sh 'docker login  -u anuagnel -password-stdin < /home/test/mydockerpwd'
 			}
 		}
 
