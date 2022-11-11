@@ -12,7 +12,7 @@ pipeline{
 
 			steps {
 				sh 'mvn clean install'
-				sh 'docker build -t anuagnel/mypublicbuilds:mynewapp-${BUILD_NUMBER} .'
+				sh 'docker build -t anuagnel/mypublicbuilds:mynewapp-new-${BUILD_NUMBER} .'
 			}
 		}
 
@@ -20,14 +20,14 @@ pipeline{
 
 			steps {
 				
-				sh 'docker login  -u anuagnel -password-stdin < /home/test/mydockerpwd'
+				sh 'docker login  -u anuagnel --password-stdin < /home/test/mydockerpwd'
 			}
 		}
 
 		stage('Push') {
 
 			steps {
-				sh 'docker push anuagnel/mypublicbuilds:mynewapp-j-${BUILD_NUMBER}'
+				sh 'docker push anuagnel/mypublicbuilds:mynewapp-new-${BUILD_NUMBER}'
 			}
 		}
 	}
